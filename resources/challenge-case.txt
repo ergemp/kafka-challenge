@@ -1,0 +1,84 @@
+/*
+Given a string composed of n characters in the set {'<', '>' , '^', 'v'} that represent translations
+in an infinite bidimensional grid and assuming that they describe a path starting at the origin [0, 0],
+find the first coordinate that is visited twice.
+
+Examples:
+
+">>^^" represents the path that ends in [2, 2] and doesn't ever visit the same place twice so
+the response will be empty.
+
+                  [2,2]
+                    ^
+                  [2,1]
+                    ^
+[0,0] -> [1,0] -> [2,0]
+
+">>^<vvvv" will cross over itself at [1, 0]
+
+         [1,1] <- [2,1]
+           v        ^
+[0,0] -> [1,0] -> [2,0]
+           v
+         [1,-1]
+           v
+          ...
+*/
+
+
+class Example {
+	// O(n)
+  public static Point firstCrossing(String path) {
+  	
+    Set<Point> pSet = new HashSet<>();
+    
+    Point retVal = null;
+    
+    Integer strCount = path.length();
+    Integer x = 0;
+    Integer y = 0;
+    
+    char current = '';
+    
+    for (Integer i=0; i++; i<strCount){
+      
+      current = path.charAt(i);
+      
+      switch(current) {
+        case 'v':
+    			y--;      
+          break;
+        case '^':
+          y++;
+          break;
+        case '>':
+          x++;
+          break;
+        case '<':
+          x--;
+          break;          
+      }
+      
+      point = new Point(x,y);
+      
+      if (pSet.add(point)){
+      }
+      else {
+        retVal = point;
+        break;
+      }
+
+    }
+    
+    return retVal;
+  }
+}
+    
+
+firstCrossing(">>^^") === null
+firstCrossing(">>^<vvvv") == new Point(1,0)
+  
+  
+  
+
+ 

@@ -1,0 +1,2 @@
+org/ergemp/sink/HdfsSink.class
+org/ergemp/source/KafkaStreaming.class
